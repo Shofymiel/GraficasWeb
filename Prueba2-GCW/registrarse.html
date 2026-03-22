@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bienvenido</title>
+	<link rel="stylesheet" href="registrarse.css">
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Bpmf+Iansui&family=Gveret+Levin&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rock+Salt&display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+	<h2>REVOLUT RACING</h2>
+
+	<video autoplay muted loop id="video-fondo">
+		<source src="Video_de_Carrera_Cerca_del_Mar.mp4" type="video/mp4">
+	</video>
+
+	<div class="container" id="container">
+
+		<div class="form-container sign-up-container">
+			<form action="#" id="form-registro">
+				<h1>Crear una cuenta</h1>
+				<input type="text" placeholder="name" required autocomplete="username" />
+				<input type="email" placeholder="email" required autocomplete="email" />
+				<input type="password" placeholder="password" required autocomplete="new-password" />
+				<button type="submit">Registrarse</button>
+			</form>
+		</div>
+		<div class="form-container sign-in-container">
+			<form action="#" id="form-login">
+				<h1>Iniciar sesion</h1>
+				<input type="email" placeholder="Email" required autocomplete="email" />
+				<input type="password" placeholder="password" required autocomplete="current-password" />
+				<button type="submit">Iniciar</button>
+			</form>
+		</div>
+
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Bienvenido de nuevo!</h1>
+					<p>Para mantenerse conectado con nosotros, inicie sesión con su información personal.</p>
+					<button class="ghost" id="signIn">Iniciar</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hola, Jugador!</h1>
+					<p>Introduce tus datos personales y comienza tu aventura con nosotros.</p>
+					<button class="ghost" id="signUp">Registrarse</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="registrarse.js"></script>
+</body>
+
+</html>

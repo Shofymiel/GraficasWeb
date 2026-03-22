@@ -1,0 +1,353 @@
+/* --- Reset básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #e8d9a8; /* Color crema/oro clásico */
+    overflow: hidden; /* Evita barras de desplazamiento */
+    background: transparent; /* Fondo transparente */
+}
+
+/* --- Canvas de Three.js (se inyecta aquí) --- */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+/* --- UI Overlay Principal --- */
+.ui-overlay {
+    position: fixed; /* Cambiado de absolute a fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    z-index: 10;
+    pointer-events: none; /* ¡CLAVE! Los clicks pasan al juego */
+    background: transparent; /* Sin fondo */
+}
+
+/* Elementos que necesitan interactividad */
+.ui-overlay button,
+.ui-overlay a,
+.ui-overlay .clickable {
+    pointer-events: auto;
+}
+
+/* --- Estilos de Texto --- */
+.game-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f7e096;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra más fuerte para visibilidad */
+}
+
+.player-info p, 
+.race-info p, 
+.track-map-label {
+    font-size: 1rem;
+    color: #c9b48c;
+    margin-bottom: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.val {
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* --- Esquina Superior Izquierda --- */
+.top-left {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent; /* Sin fondo */
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid #c9b48c;
+    border-radius: 6px;
+    color: #c9b48c;
+    text-decoration: none;
+    font-size: 0.9rem;
+    background-color: rgba(0, 0, 0, 0.3); /* Muy sutil, casi transparente */
+    backdrop-filter: blur(2px); /* Pequeño desenfoque */
+    transition: background 0.2s, color 0.2s;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.back-btn:hover {
+    background-color: #c9b48c;
+    color: #111;
+}
+
+.player-name .val {
+    font-size: 1.1rem;
+}
+
+.position .val {
+    font-size: 1.3rem;
+}
+
+/* --- Esquina Superior Derecha --- */
+.top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    background: transparent; /* Sin fondo */
+}
+
+.race-info p {
+    font-size: 1.1rem;
+}
+
+.lap .val, 
+.time .val, 
+.best .val {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+}
+
+/* --- Panel de Medidores --- */
+.gauge-cluster {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+    background: transparent; /* Sin fondo */
+}
+
+/* Medidores con fondo semitransparente */
+.gauge {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    background-color: rgba(21, 21, 21, 0.7); /* Fondo con opacidad */
+    border: 3px solid rgba(51, 51, 51, 0.8);
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px); /* Efecto vidrio */
+}
+
+.gauge-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Marcas de Graduación */
+.mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 48%;
+    background: rgba(102, 102, 102, 0.9);
+    transform-origin: top center;
+}
+
+.mark.major {
+    height: 44%;
+    background: rgba(153, 153, 153, 0.9);
+    text-align: center;
+    color: #999;
+    font-size: 0.8rem;
+    padding-bottom: 2px;
+    box-sizing: content-box;
+}
+
+/* Unidad y Velocidad Digital */
+.unit {
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: rgba(102, 102, 102, 0.9);
+    text-transform: lowercase;
+}
+
+.digital-speed {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Aguja del Medidor */
+.gauge-needle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 45%;
+    background-color: #f00;
+    transform-origin: bottom center;
+    transform: rotate(270deg);
+    border-radius: 2px;
+    z-index: 5;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.gauge-needle::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: -6px;
+    width: 15px;
+    height: 15px;
+    background: #666;
+    border-radius: 50%;
+    border: 2px solid #151515;
+}
+
+/* Tacómetro y Engranaje */
+.tachometer-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+}
+
+.tachometer {
+    width: 130px;
+    height: 130px;
+    background-color: rgba(18, 18, 18, 0.7);
+    border: 3px solid rgba(51, 51, 51, 0.8);
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+}
+
+.gear-indicator {
+    font-family: 'Roboto', sans-serif;
+    color: #c9b48c;
+    text-align: right;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.gear-indicator .val {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+/* --- Mini-mapa --- */
+.track-map-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-align: center;
+    background: transparent;
+}
+
+.track-map {
+    width: 160px;
+    height: 160px;
+    background-color: rgba(26, 26, 26, 0.6);
+    border: 3px solid rgba(51, 51, 51, 0.8);
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.track-path {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.track-map-label {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #c9b48c;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* --- Barras de Estado --- */
+.car-status {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 250px;
+    background: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(2px); /* Muy sutil */
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #c9b48c;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.status-item .val {
+    color: #fff;
+    font-weight: 500;
+    width: 35px;
+    text-align: right;
+}
+
+.bar-container {
+    width: 120px;
+    height: 10px;
+    background-color: rgba(42, 42, 42, 0.6);
+    border-radius: 5px;
+    overflow: hidden;
+    backdrop-filter: blur(2px);
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.health .bar-fill {
+    background-color: #ffde59;
+}
+
+.grip .bar-fill {
+    background-color: #ffde59;
+}
+
+.damage-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+}

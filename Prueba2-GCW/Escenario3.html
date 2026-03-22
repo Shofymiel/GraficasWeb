@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="diseñoInterfaz.css">
+    <title>Mi Juego</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/examples/jsm/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="game-scene">
+        
+        <div class="ui-overlay">
+
+            <div class="top-left">
+                <a href="MenuPrincipal.html" class="back-btn">< Regresar</a>
+                <h1 class="game-title">REVOLUT RACING</h1>
+                <div class="player-info">
+                    <p class="player-name">JUGADOR: <span class="val">Shoji_13</span></p>
+                    <p class="position">POSICION: <span class="val">1 / 12</span></p>
+                </div>
+            </div>
+
+            <div class="top-right">
+                <div class="race-info">
+                    <p class="lap">VUELTAS: <span class="val">3 / 8</span></p>
+                    <p class="time">TIEMPO: <span class="val">04:32.19</span></p>
+                    <p class="best">RECORD: <span class="val">01:28.75</span></p>
+                </div>
+            </div>
+
+            
+
+            <div class="track-map-container">
+                <div class="track-map">
+                    <svg viewBox="0 0 100 100" class="track-path">
+                        <path d="M 50 10 Q 90 20, 80 50 Q 70 80, 50 90 Q 30 80, 20 50 Q 10 20, 50 10" fill="none" stroke="#666" stroke-width="4"/>
+                        <circle cx="50" cy="10" r="3" fill="#f00" class="player-car"/>
+                        <circle cx="30" cy="80" r="2" fill="#999"/>
+                    </svg>
+                </div>
+                <p class="track-map-label">MAPA</p>
+            </div>
+
+            <div class="car-status">
+                <div class="status-item">
+                    <span class="label">SALUD</span>
+                    <div class="bar-container health">
+                        <div class="bar-fill" style="width: 90%;"></div>
+                    </div>
+                    <span class="val">90%</span>
+                </div>
+               
+                <div class="status-item">
+                    <span class="label">DAÑO</span>
+                    <div class="damage-indicator ok">
+                        <span class="icon">✔</span>
+                        <span class="val">/ok</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script type="module" src="juego3.js"></script>
+</body>
+
+</html>

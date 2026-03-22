@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="MenuPrincipal.css">
+    <title>REVOLUT RACING - Menú Principal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bpmf+Iansui&family=Gveret+Levin&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rock+Salt&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+
+
+    <div class="top-left">
+        <button id="configBtn" class="config-btn">
+            <img id="configImage" class="config-img" src="https://cdn-icons-png.flaticon.com/512/126/126472.png"
+                alt="config">
+            Configuración
+        </button>
+    </div>
+
+
+
+
+    <button id="guiaBtn" class="guia-btn">Guia</button>
+
+    <div id="modalAsistente" class="modal-oculto">
+        <div class="tarjeta-contenido">
+            <h2 class="tarjeta-titulo">Guía Rápida</h2>
+
+            <img id="imagenTutorial" src="" class="tarjeta-imagen">
+
+            <button id="btnSiguienteTutorial" class="btn-blue" onclick="avanzarTutorial()">Siguiente</button>
+        </div>
+    </div>
+
+
+    <div id="playerNameContainer" class="player-name-area">
+        <h3>Jugador: <span id="playerNameDisplay" class="player-name-span">REVOLUT_01</span></h3>
+    </div>
+
+    <div class="main-content">
+        <h1>REVOLUT RACING</h1>
+
+
+        <div class="carousel-container">
+            <section class="carousel" aria-label="Gallery">
+                <ol class="carousel__viewport">
+                    <!-- SLIDE 1 - Con imagen personalizada -->
+                    <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+                        <div class="carousel__content">
+                            <img src="./assets/Escenario1.png" alt="Carrera sobre el mar" class="slide-image">
+                        </div>
+                        <div class="carousel-nav-buttons">
+                            <a href="#carousel__slide3" class="carousel__prev">◀</a>
+                            <a href="#carousel__slide2" class="carousel__next">▶</a>
+                        </div>
+                    </li>
+
+                    <li id="carousel__slide2" tabindex="0" class="carousel__slide">
+                        <div class="carousel__content">
+                            <img src="./assets/Escenario2.png" alt="Descripción" class="slide-image">
+                        </div>
+                        <div class="carousel-nav-buttons">
+                            <a href="#carousel__slide1" class="carousel__prev">◀</a>
+                            <a href="#carousel__slide3" class="carousel__next">▶</a>
+                        </div>
+                    </li>
+
+                    <li id="carousel__slide3" tabindex="0" class="carousel__slide">
+                        <div class="carousel__content">
+                            <img src="./assets/Escenario3.png" alt="Descripción" class="slide-image">
+                        </div>
+                        <div class="carousel-nav-buttons">
+                            <a href="#carousel__slide2" class="carousel__prev">◀</a>
+                            <a href="#carousel__slide1" class="carousel__next">▶</a>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+        </div>
+
+
+        <div class="button-wrapper">
+            <button class="shine-button button-emerald">Jugar</button>
+        </div>
+    </div>
+
+    <script>
+        const btnJugar = document.querySelector('.button-emerald');
+        function obtenerSlideActivo() {
+            const scrollPosicion = document.querySelector('.carousel__viewport').scrollLeft;
+            const anchoSlide = document.querySelector('.carousel__slide').offsetWidth;
+
+            return Math.round(scrollPosicion / anchoSlide);
+        }
+
+
+        function jugarSegunSlide() {
+            const slide = obtenerSlideActivo();
+
+            switch (slide) {
+                case 0:
+                    window.location.href = "index.html";
+                    break;
+
+                case 1:
+                    window.location.href = "Escenario2.html";
+                    break;
+                case 2:
+                    window.location.href = "Escenario3.html";
+                    break;
+            }
+        }
+
+        btnJugar.onclick = jugarSegunSlide;
+    </script>
+
+</body>
+
+</html>
