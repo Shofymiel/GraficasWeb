@@ -1,0 +1,70 @@
+/* Modificamos el ancho del body de MenuPrincipal.css para que quepan las 4 tarjetas */
+body {
+    max-width: 1200px ; 
+}
+.menu-container {
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 50px;
+}
+/* Ajustes específicos para el carrusel de carros */
+.car-carousel {
+    padding-top: 480px; /* Altura fija para que quepa la tarjeta */
+    max-width: 550px; /* Ajustamos para dar espacio a la nueva tarjeta ancha */
+    margin: 0 auto;
+    background: transparent;
+    filter: none;
+}
+.car-card {
+    /* Mismo degradado y estilo que tu botón de configuración */
+    background: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    width: 350px; /* ¡Tarjeta mucho más ancha! */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+    margin: 0 auto;
+}
+.car-card:hover {
+    transform: scale(1.05); /* Cambiamos el efecto para que no se corte en el carrusel */
+}
+.car-image {
+    width: 100%;
+    height: 180px; /* Imagen un poco más alta para mantener la proporción */
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    font-style: italic;
+    font-family: 'Roboto', sans-serif;
+}
+.car-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.car-stats {
+    text-align: left;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-family: 'Roboto', sans-serif; /* Importante para que las barras se vean bien */
+}
+.car-stats span {
+    color: #38ef7d;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+.select-btn {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+}
